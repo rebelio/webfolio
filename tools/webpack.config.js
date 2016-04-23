@@ -76,9 +76,10 @@ const config = {
         test: /\.scss$/,
         loaders: [
           'isomorphic-style-loader',
-          `css-loader?${DEBUG ? 'sourceMap&' : 'minimize&'}modules&localIdentName=` +
+          `css-loader?${DEBUG ? 'sourceMap' : 'minimize'}&modules&localIdentName=` +
           `${DEBUG ? '[name]_[local]_[hash:base64:3]' : '[hash:base64:4]'}`,
           'postcss-loader?parser=postcss-scss',
+          'sass-loader?sourceMap',
         ],
       }, {
         test: /\.json$/,
@@ -118,6 +119,7 @@ const clientConfig = extend(true, {}, config, {
     path: path.join(__dirname, '../build/public'),
     filename: DEBUG ? '[name].js?[hash]' : '[name].[hash].js',
   },
+
 
   // Choose a developer tool to enhance debugging
   // http://webpack.github.io/docs/configuration.html#devtool

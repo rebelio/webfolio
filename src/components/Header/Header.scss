@@ -11,6 +11,11 @@
 
 $brand-color: #61dafb;
 
+.pwAppBar{
+  background-color:white!important;
+}
+
+
 .root {
   background: #373277;
   color: #fff;
@@ -23,7 +28,7 @@ $brand-color: #61dafb;
 }
 
 .brand {
-  color: color($brand-color lightness(+10%));
+
   text-decoration: none;
   font-size: 1.75em; /* ~28px */
 }

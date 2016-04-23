@@ -12,27 +12,49 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Header.scss';
 import Link from '../Link';
 import Navigation from '../Navigation';
+import AppBar from 'material-ui/lib/app-bar';
+import IconButton from 'material-ui/lib/icon-button';
+import NavigationClose from 'material-ui/lib/svg-icons/navigation/close';
+import FlatButton from 'material-ui/lib/flat-button';
+import Tabs from 'material-ui/lib/tabs/tabs';
+import Tab from 'material-ui/lib/tabs/tab';
+import Slider from 'material-ui/lib/slider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
 
 class Header extends Component {
 
+
+  handleTouchTap() {
+  alert('onTouchTap triggered on the title component');
+ }
+
+  handleActive(tab) {
+    alert(`A tab with this route property ${tab.props.route} was activated.`);
+  }
+
   render() {
+
+    var styles = {
+      title: {
+        cursor: 'pointer'
+      }
+    };
+
+
+
     return (
       <div className={s.root}>
-        <div className={s.container}>
-          <Navigation className={s.nav} />
-          <Link className={s.brand} to="/">
-            <img src={require('./logo-small.png')} width="38" height="38" alt="React" />
-            <span className={s.brandTxt}>Your Company</span>
-          </Link>
-          <div className={s.banner}>
-            <h1 className={s.bannerTitle}>React</h1>
-            <p className={s.bannerDesc}>Complex web apps made easy</p>
-          </div>
-        </div>
+          <AppBar className={s.pwAppBar}
+            title={<span style={styles.title}>Title</span>}
+          onTitleTouchTap={this.handleTouchTap}
+          iconElementLeft={<IconButton><NavigationClose /></IconButton>}>
+
+         </AppBar>
       </div>
     );
   }
 
 }
-
+injectTapEventPlugin();
 export default withStyles(Header, s);
